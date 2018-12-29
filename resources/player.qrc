@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="background">
+    <file>versus.jpg</file>
+    <file>tekken.jpg</file>
+  </qresource>
+</RCC>

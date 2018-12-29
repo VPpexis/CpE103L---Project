@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="background1">
+    <file>Game_of_War_Fire_Age.jpg</file>
+  </qresource>
+  <qresource prefix="cards">
+    <file>handcards.png</file>
+  </qresource>
+</RCC>
