@@ -11,14 +11,8 @@ pl2 = Pile()
 
 cd.fill()
 print("Deck before deal")
-cd.displayDeck()
+cd.countDeck()
 print("\n\n\n\n")
 print("Player 1 Pile")
 pl1.addCard(cd.dealCard())
-pl1.addCard(cd.dealCard())
-pl1.addCard(cd.dealCard())
-
 pl1.showCards()
-    
-
-

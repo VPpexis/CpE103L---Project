@@ -23,7 +23,9 @@ class Pile:
         #The data type of c should be a Class Object
         def addCard(self, c):
             self.pile.append(c)
+            print(c)
             self.end += 1
+            print("Value of self.end is " + str(self.end))
             return
 
         #The data type of p should be a Pile Object.
@@ -44,9 +46,9 @@ class Pile:
         
         #Returns the card stored in the object.
         def showCards(self):
-            i = 0
-            for x in range(1, self.end):
-                print(str(self.pile[i].toString()))
+            i = 1
+            for x in range(0, self.end):
+                print(self.pile[i].toString())
                 i += 1
             return
         
