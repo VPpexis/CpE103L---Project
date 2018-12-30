@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="table">
+    <file>cardback.png</file>
+    <file>midcard.png</file>
     <file>tabletopgame.jpg</file>
   </qresource>
 </RCC>
