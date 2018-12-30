@@ -3,7 +3,7 @@ class Card:
 	def _init__(self):
 		return
 	
-	def setCard(self,r,s):
+	def setCard(self, r, s):
 		self.r = r
 		self.s = s
 	

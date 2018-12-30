@@ -3,35 +3,45 @@ from array import *
 import random
 
 class cardDeck:
-	numCards = 0
-	deck = [Card()]
+	
+	#Instance of the carrDeck.
 	def __init__(self):
-		i = 0
+            self.numCards = 0
+            self.deck = [Card()]
+            return
 		
+	#Fills the deck with 52 cards.
 	def fill(self):
-		index = 0
-		
-		for s in range(1,52):
-			cardDeck.deck.append(Card())
-		
-		for r in range(1,14):
-			for s in range(1,5):
-				cardDeck.deck[index].setCard(r,s)
-				index += 1
-				
-			cardDeck.numCards = 52;
-			
+            index = 0
+            for s in range(0,52):
+                self.deck.append(Card())
+            for r in range(1,14):
+                for s in range(1,5):
+                    self.deck[index].setCard(r,s)
+                    index += 1
+            self.numCards = 52
+            return
+	
+	#Shows the Deck
 	def displayDeck(self):
-		for i in range(0, cardDeck.numCards):
-			print(str(cardDeck.deck[i].toString()))
+            for i in range(0, self.numCards):
+                print(str(self.deck[i].toString()))
+            return
 			
-		
+	#Shuffled the cards in the deck
 	def shuffleDeck(self):
-		random.shuffle(cardDeck.deck)
+	    random.shuffle(self.deck)
+	    return
 		
-	def dealCard():
-		if(cardDeck.numCards == 0):
-			return 0
-		else:
-			return deck[cardDeck.numCards]
+	#Deal the card to the pile
+	def dealCard(self):
+            if(self.numCards == 0):
+                return 0
+            else:
+                return self.deck[self.numCards]
+	
+	#Test if cardDeck is working.
+	def test(self):
+            print("Test is successful...")
+            return
    

@@ -2,20 +2,23 @@ from src.cardDeck import cardDeck
 from src.Card import Card
 from src.Pile import Pile
 
-
-p = cardDeck()
+cd = cardDeck()
 s = Card()
-a = Pile()
+pl1 = Pile()
+pl2 = Pile()
 
-#s.setCard(10,1)
-#print(str(s.getCardRank()) + " " + str(s.getCardSuit()))
+#Error: 'Card' object has no attribute 'r'
 
-"""print("Before Shuffle")
-p.fill()
-p.displayDeck()
+cd.fill()
+print("Deck before deal")
+cd.displayDeck()
+print("\n\n\n\n")
+print("Player 1 Pile")
+pl1.addCard(cd.dealCard())
+pl1.addCard(cd.dealCard())
+pl1.addCard(cd.dealCard())
 
-print("\n\n\nAfter Shuffle\n")
-p.shuffleDeck()
-p.displayDeck()"""
+pl1.showCards()
+    
 
-print(a.test())
+
