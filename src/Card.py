@@ -1,7 +1,7 @@
 class Card:
 	
 	#Instance of the object.
-	def _init__(self):
+	def __init__(self):
 		self.r = 0
 		self.s = 0
 		return
