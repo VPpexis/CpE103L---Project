@@ -30,24 +30,28 @@ p.s.s PLS post updateds or changes that you have done here by
 '''
 #################################################################
 
-'''
 cd.fill()
-print("Deck before deal")
-cd.displayDeck()
+#print("Deck before deal")
+#cd.displayDeck()
+d = cd.dealCard()
+pl1.addCard(d)
+d = cd.dealCard()
+pl1.addCard(d)
 #cd.countDeck()
 print("\n\n\n\n")
 print("Player 1 Pile")
+pl1.showCards()
 
 #################################################################
-
+'''
 pl1.addCard(cd.dealCard())
 #pl1.showCards() 
 '''
 #################################################################
-
+'''
 cd.fill()
 cardSlot(cd.dealCard())
-
+'''
 #################################################################
 
 #player1.test()

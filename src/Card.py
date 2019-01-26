@@ -22,7 +22,7 @@ class Card:
 	#Converts r & s to String value.
 	def toString(self):
 		val = ""
-		suitlist = ["", "Clubs", "Diamonds", "Hearts", "Spades"]
+		suitlist = ["Error", "Clubs", "Diamonds", "Hearts", "Spades"]
 		
 		if(self.r == 1):
 			val = "Ace"

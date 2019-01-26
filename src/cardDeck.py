@@ -45,7 +45,7 @@ class cardDeck:
     def test(self):
             print("Test is successful...")
             return
-   
+        
    #Used for debugging. Count how many cards in the deck.
     def countDeck(self):
             print(len(cardDeck.deck))
