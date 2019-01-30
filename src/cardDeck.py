@@ -14,7 +14,7 @@ class cardDeck:
 	#Fills the deck with 52 cards.
     def fill(self):
             index = 0
-            for s in range(0,52):
+            for s in range(0,51):
                 cardDeck.deck.append(Card())
             for r in range(1,14):
                 for s in range(1,5):
@@ -39,7 +39,12 @@ class cardDeck:
             if(self.numCards == 0):
                 return 0
             else:
+                r = self.numCards
+                self.numCards = self.numCards - 1
                 return cardDeck.deck[self.numCards]
+
+    def getSize(self):
+        return self.numCards
 	
 	#Used for debugging. Test if cardDeck is working.
     def test(self):
@@ -49,3 +54,4 @@ class cardDeck:
    #Used for debugging. Count how many cards in the deck.
     def countDeck(self):
             print(len(cardDeck.deck))
+            return

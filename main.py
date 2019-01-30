@@ -3,6 +3,7 @@ from src.Card import Card
 from src.Pile import Pile
 from src.cardSlot import cardSlot
 from src.Player import Player
+from src.Game import Game
 
 cd = cardDeck()
 s = Card()
@@ -10,6 +11,7 @@ pl1 = Pile()
 pl2 = Pile()
 player1 = Player("Van")
 player2 = Player("Ria")
+g = Game()
 
 '''
 ----------------------------------------------------------------
@@ -29,7 +31,7 @@ p.s.s PLS post updateds or changes that you have done here by
 	copying the format here and do it below Update Post.
 '''
 #################################################################
-
+''''
 cd.fill()
 #print("Deck before deal")
 #cd.displayDeck()
@@ -41,7 +43,7 @@ pl1.addCard(d)
 print("\n\n\n\n")
 print("Player 1 Pile")
 pl1.showCards()
-
+'''
 #################################################################
 '''
 pl1.addCard(cd.dealCard())
@@ -58,3 +60,7 @@ cardSlot(cd.dealCard())
 #player2.test()
 #print(player1.getName())
 #print(player2.getName())
+
+####################################
+
+g.play()

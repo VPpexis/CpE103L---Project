@@ -4,7 +4,7 @@ class Pile:
         
         #Instance of the pile.
         def __init__(self):
-            self.pile = [Card()]
+            self.pile = []
             self.front = 0
             self.end = 0
             return
@@ -18,7 +18,8 @@ class Pile:
 
         #Gets the sized of the Pile.
         def getSize(self):
-            return (self.end - self.front)
+            val = self.end - self.front
+            return val
 
         #The data type of c should be a Class Object
         def addCard(self, c):
@@ -29,16 +30,16 @@ class Pile:
         #The data type of p should be a Pile Object.
         def addCards(self, p):
             while p.getSize() > 0:
-                addCard(p.nextCard())
+                self.addCard(p.nextCard())
             return
 
         #Goes to the next card in the pile.
         def nextCard(self):
-            if front==end:
+            if self.front==self.end:
                 return "No cards Left boi."
             else:
-                self.pile[self.front]=card
-                front += 1
+                c = self.pile[self.front]
+                self.front += 1
                 return c
             return
         

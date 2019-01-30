@@ -39,7 +39,7 @@ class Card:
 
 	#Compares the other card with the current card.
 	def compareTo(self, ob):
-		thisRank = getCardRank()
+		thisRank = self.getCardRank()
 		otherRank = ob.getCardRank()
 
 		if thisRank == 1:

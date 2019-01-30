@@ -1,4 +1,5 @@
 from src.Pile import Pile
+from src.Card import Card
 
 class Player:
 
@@ -12,9 +13,11 @@ class Player:
 	#
 	def playCard(self):
 		if self.playPile.getSize() == 0:
-			useWonPile()
+			self.useWonPile()
 		elif self.playPile.getSize() > 0:
-			return playPile.nextCard()
+			return self.playPile.nextCard()
+		else:
+			print("No card is returned")
 		return
 
 	#Returns the name of the player.
@@ -23,18 +26,24 @@ class Player:
 
 	#collects the card from the other player.
 	def collectCard(self, c):
-		wonPile.addCard(c)
+		if isinstance(c, Card):
+			self.wonPile.addCard(c)
+		else:
+			print("Error")
 		return
 
 	#collect the cards from the other player.
 	def collectCards(self, p):
-		self.wonPile.addCards(p)
+		if isinstance(p, Pile):
+			self.wonPile.addCards(p)
+		else:
+			print("Error")
 		return
 
 	#Resets the pile back to 0.
 	def useWonPile(self):
 		self.playPile.clear()	#Resets front and end to 0
-		self.playPile.addCards(wonPile)
+		self.playPile.addCards(self.wonPile)
 		self.wonPile.clear()	#Resets front and end to 0
 		return
 
@@ -46,3 +55,8 @@ class Player:
 	def test(self):
 		print("Test is sucessful...")
 		return
+
+	#Used for debugging.
+	def displayPlayerCards(self):
+		self.wonPile.showCards()
+		self.playPile.showCards()
