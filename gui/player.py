@@ -72,7 +72,7 @@ class Ui_Player(object):
 
 import player_rc
 
-if __name__ == "__main__":
+def main():
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Player = QtWidgets.QWidget()

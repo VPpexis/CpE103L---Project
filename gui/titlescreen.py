@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import player as player
 
 class Ui_TitleScreen(object):
     def setupUi(self, TitleScreen):
@@ -22,6 +23,7 @@ class Ui_TitleScreen(object):
         self.StartButton.setGeometry(QtCore.QRect(320, 130, 111, 41))
         self.StartButton.setIconSize(QtCore.QSize(16, 16))
         self.StartButton.setObjectName("StartButton")
+        self.StartButton.clicked.connect(self.on_click())
         self.QuitButton = QtWidgets.QPushButton(TitleScreen)
         self.QuitButton.setGeometry(QtCore.QRect(440, 130, 111, 41))
         self.QuitButton.setObjectName("QuitButton")
@@ -36,6 +38,11 @@ class Ui_TitleScreen(object):
         self.handcards.setText(_translate("TitleScreen", "<html><head/><body><p><img src=\":/cards/handcards.png\"/></p></body></html>"))
         self.StartButton.setText(_translate("TitleScreen", "Start Game"))
         self.QuitButton.setText(_translate("TitleScreen", "Quit Game"))
+
+    def on_click(self):
+        player.main()
+        print(1)
+        return
 
 import titlebackground_rc
 

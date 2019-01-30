@@ -1,40 +1,60 @@
 from src.Card import Card
 
 class Pile:
-        pile=[Card()]
-        front=1
-        end=4
-        card=Card()
         
-
+        #Instance of the pile.
+        def __init__(self):
+            self.pile = []
+            self.front = 0
+            self.end = 0
+            return
+        
+        #Clears data stored in object.
         def clear(self):
-                global front,end
-                front=0
-                end=0
-                print("front",front,"end",end)
+            self.front=0
+            self.end=0
+            #print("Pile is cleared...")
+            return
 
+        #Gets the sized of the Pile.
         def getSize(self):
-                global front,end
-                pileSize=end-front
-                return pileSize
+            val = self.end - self.front
+            return val
 
-        def addCard(self):
-                global end,pile,card
-                pile[end]=card
-                end+=1
+        #The data type of c should be a Class Object
+        def addCard(self, c):
+            self.pile.append(c)
+            self.end += 1
+            return
 
-        def addCards(self):
-                while self.getSize()>0:
-                        addCard(self.nextCard())
+        #The data type of p should be a Pile Object.
+        def addCards(self, p):
+            while p.getSize() > 0:
+                self.addCard(p.nextCard())
+            return
 
+        #Goes to the next card in the pile.
         def nextCard(self):
-                global front,pile,card
-                if front==end:
-                        return "No cards Left boi."
-                else:
-                        pile[front]=card
-                        front+=1
-                        return c
+            if self.front==self.end:
+                print("No cards left.")
+                return
+            else:
+                c = self.pile[self.front]
+                self.front += 1
+                return c
+            return
+        
+        #Returns the card stored in the object.
+        def showCards(self):
+            i = 0
+            for x in range(0, self.end):
+                print(str(self.pile[i].toString()))
+                i += 1
+            return
+        
+        def test(self):
+            print("Test is successful...")
+            return
         
         
 

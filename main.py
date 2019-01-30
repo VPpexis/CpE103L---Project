@@ -1,21 +1,66 @@
 from src.cardDeck import cardDeck
 from src.Card import Card
 from src.Pile import Pile
+from src.cardSlot import cardSlot
+from src.Player import Player
+from src.Game import Game
 
-
-p = cardDeck()
+cd = cardDeck()
 s = Card()
-a = Pile()
+pl1 = Pile()
+pl2 = Pile()
+player1 = Player("Van")
+player2 = Player("Ria")
+g = Game()
 
-#s.setCard(10,1)
-#print(str(s.getCardRank()) + " " + str(s.getCardSuit()))
+'''
+----------------------------------------------------------------
+As of 31/12/18	by: Panugan.
+----------------------------------------------------------------
+pileDeck.dealCard() Error: 'Card' object has no attribute 'r'
+Player class is created but not tested.
+Card.py is not finish. Problems encountered in understanding
+	java code lines.
+Game.py is created but some codes are not finished due to the
+	unability of converting java to python code in some parts.
+Added test() module to test class if it would initially work.
 
-"""print("Before Shuffle")
-p.fill()
-p.displayDeck()
+p.s. Label accoridngly with comments to avoid confussions and
+	do not remove anything important in the main class.
+p.s.s PLS post updateds or changes that you have done here by
+	copying the format here and do it below Update Post.
+'''
+#################################################################
+''''
+cd.fill()
+#print("Deck before deal")
+#cd.displayDeck()
+d = cd.dealCard()
+pl1.addCard(d)
+d = cd.dealCard()
+pl1.addCard(d)
+#cd.countDeck()
+print("\n\n\n\n")
+print("Player 1 Pile")
+pl1.showCards()
+'''
+#################################################################
+'''
+pl1.addCard(cd.dealCard())
+#pl1.showCards() 
+'''
+#################################################################
+'''
+cd.fill()
+cardSlot(cd.dealCard())
+'''
+#################################################################
 
-print("\n\n\nAfter Shuffle\n")
-p.shuffleDeck()
-p.displayDeck()"""
+#player1.test()
+#player2.test()
+#print(player1.getName())
+#print(player2.getName())
 
-print(a.test())
+####################################
+
+g.play()
