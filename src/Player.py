@@ -59,4 +59,4 @@ class Player:
 
 	#Used for debugging.
 	def displayPlayerCards(self):
-		return(self.wonPile.getSize(), self.playPile.getSize())
+		return self.wonPile.getSize(), self.playPile.getSize()

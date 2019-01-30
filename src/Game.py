@@ -45,9 +45,10 @@ class Game:
 		down = Pile()	#Pile for cards in a war
 
 		
-		for t in range(1,100):
+		#for t in range(1,100):
+		def dealGame(self):
 			if not self.enoughCards(1):
-				break
+				return
 
 			#Data type is Card() object.
 			c1 = self.p1.playCard()
@@ -108,6 +109,7 @@ class Game:
 						break
 
 			print(str(self.p1.numCards()) + " to " + str(self.p2.numCards()))
+			return
 		return
 		
 
