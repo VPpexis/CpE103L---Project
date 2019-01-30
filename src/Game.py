@@ -111,13 +111,13 @@ class Game:
 		return
 		
 
-	def getWinner():
+	def getWinner(self):
 		if(self.p1.numCards() > self.p2.numCards()):
-			return p1
+			return "P1"
 		elif(self.p2.numCards() > self.p1.numCards()):
-			return self.p2
+			return "P2"
 		else:
-			return null
+			return None
 		return
 
 	def check(self):
