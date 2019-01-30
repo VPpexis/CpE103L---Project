@@ -6,37 +6,38 @@ from src.Card import Card
 class Game:
 
 	def __init__(self):
-		self.p1 = Player("Ernie")
-		self.p2 = Player("Burt")
+		self.p1 = Player("P1")
+		self.p2 = Player("P2")
 		return
 
 	def enoughCards(self, n):
+		print("P1 Cards: " + str(self.p1.displayPlayerCards()))
+		print("P2 Cards: " + str(self.p2.displayPlayerCards()))
 		if isinstance(n, int):
 			if (self.p1.numCards() < n or self.p2.numCards() < n):
+				print("Return is False")
 				return False
+			print("Return is True")
+			return True
 		return True
 
 	def play(self):
 
 		cd = cardDeck()
 		cd.fill()
-		#cd.displayDeck()
-		print("\n\n\n")
+		print(cd.getSize())
+		#print("\n\n\n")
 		cd.shuffleDeck()
 		#cd.displayDeck()
-		print("\n\n\n")
+		#print("\n\n\n")
 
 		while(cd.getSize() >=2):
 			#print(cd.getSize())
 			self.p1.collectCard(cd.dealCard())
 			self.p2.collectCard(cd.dealCard())
 
-		print("\n\n\n")
-		print(self.p1.numCards())
-		#print(self.p2.numCards())
-		#print("Player 1 Pile: ")
-		#self.p1.displayPlayerCards()
-		#print("\n\n\nPlayer 2 Pile: ")
+		#print("Player 1: " + str(self.p1.numCards()))
+		#print("Player 2: " + str(self.p2.numCards()))
 		#self.p2.displayPlayerCards()
 		self.p1.useWonPile()
 		self.p2.useWonPile()
@@ -53,6 +54,7 @@ class Game:
 			c2 = self.p2.playCard()
 
 			print("\nTurn " + str(t) + ": ")
+
 			print(self.p1.getName() + ": " + str(c1.toString()) + " ")
 			print(self.p2.getName() + ": " + str(c2.toString()) + " ")
 
@@ -67,13 +69,19 @@ class Game:
 				down.addCard(c1)
 				down.addCard(c2)
 				done = True
+
 				while done:
-					num = c1.getCardRank()
-					if not(self.enoughCards(num)):
+					if not(self.enoughCards(1)):
+						done = False
 						break
+
+					num = c1.getCardRank()
+
 					print("\nWar! Players put down " + str(num) + " card(s).")
 
-					for m in range(1, num):
+					for m in range(0, num):
+						if not self.enoughCards(1):
+							break
 						c1 = self.p1.playCard()
 						c2 = self.p2.playCard()
 						down.addCard(c1)
@@ -87,13 +95,18 @@ class Game:
 					if (c1.compareTo(c2) > 0):
 						print(c1.compareTo(c2))
 						self.p1.collectCards(down)
-						done = True
+						done = False
 					elif (c1.compareTo(c2) < 0):
 						print(c1.compareTo(c2))
 						self.p2.collectCards(down)
-						done = True
-					else:
 						done = False
+					elif (c1.compareTo(c2) == 0):
+						done = True
+
+					if not(self.enoughCards(1)):
+						done = False
+						break
+
 			print(str(self.p1.numCards()) + " to " + str(self.p2.numCards()))
 		return
 		

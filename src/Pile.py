@@ -36,7 +36,8 @@ class Pile:
         #Goes to the next card in the pile.
         def nextCard(self):
             if self.front==self.end:
-                return "No cards Left boi."
+                print("No cards left.")
+                return
             else:
                 c = self.pile[self.front]
                 self.front += 1
@@ -45,7 +46,7 @@ class Pile:
         
         #Returns the card stored in the object.
         def showCards(self):
-            i = 1
+            i = 0
             for x in range(0, self.end):
                 print(str(self.pile[i].toString()))
                 i += 1

@@ -14,6 +14,7 @@ class Player:
 	def playCard(self):
 		if self.playPile.getSize() == 0:
 			self.useWonPile()
+			return self.playPile.nextCard()
 		elif self.playPile.getSize() > 0:
 			return self.playPile.nextCard()
 		else:
@@ -58,5 +59,4 @@ class Player:
 
 	#Used for debugging.
 	def displayPlayerCards(self):
-		self.wonPile.showCards()
-		self.playPile.showCards()
+		return(self.wonPile.getSize(), self.playPile.getSize())
