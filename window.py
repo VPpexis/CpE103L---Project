@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel
-from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtCore import pyqtSlot, QSize, Qt
+from PyQt5.QtGui import QIcon, QPixmap, QPainter
+from PyQt5.QtCore import pyqtSlot, QSize, Qt, QCoreApplication
 from src.cardDeck import cardDeck
 from src.Player import Player
 from src.Pile import Pile
@@ -43,17 +43,14 @@ class App(QWidget):
 		self.cd.shuffleDeck()
 
 		while(self.cd.getSize() >=2):
-
 			self.p1.collectCard(self.cd.dealCard())
 			self.p2.collectCard(self.cd.dealCard())
 
 		self.p1.useWonPile()
 		self.p2.useWonPile()
-
 		self.down = Pile()
 
 		self.initUI()
-
 		return
 
 	def enoughCards(self, n):
@@ -62,12 +59,12 @@ class App(QWidget):
 		if isinstance(n, int):
 			if (self.p1.numCards() < n or self.p2.numCards() < n):
 				print("Return is False")
+				self.w = MyPopup()
+				self.w.setGeometry(100, 100, 400, 200)
+				self.w.show()
 				return False
 			print("Return is True")
-			return True
 		return True
-
-	
 
 	def updateImage(self):
 		img1 = QPixmap("resources/cards/png/"+ str(self.p1SCard) + "_" + str(self.p1RCard) + ".jpg")
@@ -101,7 +98,7 @@ class App(QWidget):
 		self.setAutoFillBackground(True)
 
 		p = self.palette()
-		p.setColor(self.backgroundRole(), Qt.blue)
+		p.setColor(self.backgroundRole(), Qt.darkGreen)
 		self.setPalette(p)
 
 		button = QPushButton('Deal',self)
@@ -149,6 +146,9 @@ class App(QWidget):
 		self.textLabel4.move(500, 170)
 		label6.setPixmap(pixmap6)
 
+		self.w = MyPopup("Player1")
+		self.w.setGeometry(100, 100, 400, 200)
+		self.w.show()
 
 		self.show()
 		return
@@ -167,6 +167,7 @@ class App(QWidget):
 		self.p2RCard = c2.getCardRank()
 		self.p2SCard = c2.getCardSuit()
 		self.updateImage()
+
 		print("P1Card: " + str(c1.getCardRank()) + str(c1.getCardSuit()))
 		print("P2Card: " + str(c2.getCardRank())+ str(c2.getCardSuit()))
 
@@ -194,15 +195,6 @@ class App(QWidget):
 			self.textStatus.setText("War! " + str(num) + " card(s) were taken. The last card are shown.")
 			self.textStatus.show
 			
-			self.p1RCard = c1.getCardRank()
-			self.p1SCard = c1.getCardSuit()
-			self.p2RCard = c2.getCardRank()
-			self.p2SCard = c2.getCardSuit()
-			self.updateImage()
-
-			input()
-
-
 			while done:
 				if not(self.enoughCards(1)):
 					done = False
@@ -215,7 +207,6 @@ class App(QWidget):
 						break
 					c1 = self.p1.playCard()
 					c2 = self.p2.playCard()
-
 					self.down.addCard(c1)
 					self.down.addCard(c2)
 
@@ -248,6 +239,23 @@ class App(QWidget):
 			print(str(self.p1.numCards()) + " to " + str(self.p2.numCards()))
 		return
 
+class MyPopup(QWidget):
+    def __init__(self, winner):
+    	QWidget.__init__(self)
+    	self.winner = winner
+    	self.UI()
+    	return
+
+    def UI(self):
+    	_translate = QCoreApplication.translate
+    	self.setWindowTitle("Game Over!!!!")
+    	label1 =  QLabel(self)
+    	#label1.setText("Winner is " + str(self.winner))
+    	#label1.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+    	label1.setText(_translate("Window", "<html><head/><body><p align=\"center\"><span style=\" font-size:30pt;\">Gameover</span></body></html>"))
+    	#label1.setAlignment(Qt.Qt.AlignCenter)
+    	label1.show
+    	return
 
 
 if __name__ == '__main__':
