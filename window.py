@@ -146,15 +146,14 @@ class App(QWidget):
 		self.textLabel4.move(500, 170)
 		label6.setPixmap(pixmap6)
 
-		self.w = MyPopup("Player1")
-		self.w.setGeometry(100, 100, 400, 200)
-		self.w.show()
-
 		self.show()
 		return
 
 	@pyqtSlot()
 	def dealGame(self):
+		done = False
+		num = 0
+
 		if not self.enoughCards(1):
 			return
 
@@ -194,49 +193,56 @@ class App(QWidget):
 			num = c1.getCardRank()
 			self.textStatus.setText("War! " + str(num) + " card(s) were taken. The last card are shown.")
 			self.textStatus.show
+
+		self.p1RCard = c1.getCardRank()
+		self.p1SCard = c1.getCardSuit()
+		self.p2RCard = c2.getCardRank()
+		self.p2SCard = c2.getCardSuit()
+		self.updateImage()
+		time.sleep(1)
+
+		while done:
+			if not(self.enoughCards(1)):
+				done = False
+				break
+
+			print("\nWar! Players put down " + str(num) + " card(s).")
 			
-			while done:
-				if not(self.enoughCards(1)):
-					done = False
+			for m in range(0, num):
+				if not self.enoughCards(1):
 					break
-
-				print("\nWar! Players put down " + str(num) + " card(s).")
-				
-				for m in range(0, num):
-					if not self.enoughCards(1):
-						break
-					c1 = self.p1.playCard()
-					c2 = self.p2.playCard()
-					self.down.addCard(c1)
-					self.down.addCard(c2)
-
+				time.sleep(1)
+				c1 = self.p1.playCard()
+				c2 = self.p2.playCard()
+				self.down.addCard(c1)
+				self.down.addCard(c2)
 				self.p1RCard = c1.getCardRank()
 				self.p1SCard = c1.getCardSuit()
 				self.p2RCard = c2.getCardRank()
 				self.p2SCard = c2.getCardSuit()
 				self.updateImage()
 
-				print(self.p1.getName() + ": " + c1.toString() + " ")
-				print(self.p2.getName() + ": " + c2.toString() + " ")
+			print(self.p1.getName() + ": " + c1.toString() + " ")
+			print(self.p2.getName() + ": " + c2.toString() + " ")
 
+			done = False
+
+			if (c1.compareTo(c2) > 0):
+				print(c1.compareTo(c2))
+				self.p1.collectCards(self.down)
 				done = False
+			elif (c1.compareTo(c2) < 0):
+				print(c1.compareTo(c2))
+				self.p2.collectCards(self.down)
+				done = False
+			elif (c1.compareTo(c2) == 0):
+				done = True
 
-				if (c1.compareTo(c2) > 0):
-					print(c1.compareTo(c2))
-					self.p1.collectCards(self.down)
-					done = False
-				elif (c1.compareTo(c2) < 0):
-					print(c1.compareTo(c2))
-					self.p2.collectCards(self.down)
-					done = False
-				elif (c1.compareTo(c2) == 0):
-					done = True
+			if not(self.enoughCards(1)):
+				done = False
+				break
 
-				if not(self.enoughCards(1)):
-					done = False
-					break
-
-			print(str(self.p1.numCards()) + " to " + str(self.p2.numCards()))
+		print(str(self.p1.numCards()) + " to " + str(self.p2.numCards()))
 		return
 
 class MyPopup(QWidget):
