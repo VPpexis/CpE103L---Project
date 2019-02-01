@@ -1,9 +1,10 @@
-from src.cardDeck import cardDeck
-from src.Player import Player
-from src.Pile import Pile
-from src.Card import Card
+import unittest
+from cardDeck import cardDeck
+from Player import Player
+from Pile import Pile
+from Card import Card
 
-class Game:
+class Game(unittest.testCase):
 
 	def __init__(self):
 		self.p1 = Player("P1")
@@ -126,3 +127,6 @@ class Game:
 		print(1)
 		return
 
+
+if __name__ == '__main__':
+    unittest.main()

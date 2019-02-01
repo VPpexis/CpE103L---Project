@@ -39,15 +39,18 @@ class Card:
 
 	#Compares the other card with the current card.
 	def compareTo(self, ob):
-		thisRank = self.getCardRank()
-		otherRank = ob.getCardRank()
+		try:
+			thisRank = self.getCardRank()
+			otherRank = ob.getCardRank()
 
-		if thisRank == 1:
-			thisRank = 14
-		if otherRank == 1:
-			otherRank =14
+			if thisRank == 1:
+				thisRank = 14
+			if otherRank == 1:
+				otherRank =14
 
-		return (thisRank - otherRank)
+			return (thisRank - otherRank)
+		except AttributeError:
+			print("Error Encountered")
 
 	#Checks if cards are equal.
 	def equals(self, ob):
