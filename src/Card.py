@@ -39,6 +39,7 @@ class Card:
 
 	#Compares the other card with the current card.
 	def compareTo(self, ob):
+		#For Exception Handling
 		try:
 			thisRank = self.getCardRank()
 			otherRank = ob.getCardRank()
