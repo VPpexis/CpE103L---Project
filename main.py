@@ -13,6 +13,8 @@ player1 = Player("Van")
 player2 = Player("Ria")
 g = Game()
 
+print(s.compareTo('Ise'))
+
 '''
 ----------------------------------------------------------------
 As of 31/12/18	by: Panugan.
@@ -63,4 +65,3 @@ cardSlot(cd.dealCard())
 
 ####################################
 
-g.play()

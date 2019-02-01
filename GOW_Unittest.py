@@ -1,6 +1,7 @@
+import unittest
 from src.Game import Game
 
-class War():
+class War(unittest.TestCase):
 	def main():
 		g = Game()
 		g.play()
@@ -13,4 +14,4 @@ class War():
 		return
 
 if __name__ == '__main__':
-	War()
+	unittest.main()
